@@ -66,9 +66,6 @@ public class UserRepository {
         parameters.put("age", user.getAge());
         parameters.put("gender", user.getGender().name());
         parameters.put("address", user.getAddress());
-        parameters.put("created_at", user.getCreatedAt());
-        parameters.put("updated_at", user.getUpdatedAt());
-        parameters.put("deleted_at", user.getDeletedAt());
 
         Number id = simpleJdbcInsert.executeAndReturnKey(parameters);
         if (id == null) {

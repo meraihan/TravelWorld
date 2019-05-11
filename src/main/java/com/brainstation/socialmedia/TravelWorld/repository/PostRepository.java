@@ -1,9 +1,7 @@
 package com.brainstation.socialmedia.TravelWorld.repository;
 
 import com.brainstation.socialmedia.TravelWorld.model.Posts;
-import com.brainstation.socialmedia.TravelWorld.model.User;
 import com.brainstation.socialmedia.TravelWorld.model.rowmapper.PostsRowMapper;
-import com.brainstation.socialmedia.TravelWorld.model.rowmapper.UserRowMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
