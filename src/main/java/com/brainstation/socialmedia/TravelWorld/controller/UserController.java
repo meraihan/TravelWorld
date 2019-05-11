@@ -20,18 +20,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/find")
-    public String findUserByuserName(@ModelAttribute("userName") String username, Model model) {
-        User user = userService.getUser(username);
-        if (user != null) {
-            List<User> users = new ArrayList<>();
-            users.add(user);
-            model.addAttribute("users", users);
-        }
-        return "user/all";
-    }
-
-
     @GetMapping("/register")
     public String showRegistrationPage(Model model) {
         List<String> genders = new ArrayList<>();
@@ -63,6 +51,6 @@ public class UserController {
         List<User> list;
         list = userService.getAllUsers();
         model.addAttribute("users", list);
-        return "user/all";
+        return "user/add";
     }
 }

@@ -41,7 +41,7 @@ public class PostsController {
             posts.add(post);
             model.addAttribute("posts", posts);
         }
-        return "post/all";
+        return "post/post";
     }
 
 }
