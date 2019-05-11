@@ -11,7 +11,7 @@ public class User {
 	private String userName;
 	private String password;
 	private String email;
-	private String role;
+	private Role role;
 	private int age;
 	private Gender gender;
 	private String address;
@@ -21,6 +21,10 @@ public class User {
 
 	public enum Gender{
 		MALE, FEMALE, OTHER
+	}
+
+	public enum Role{
+		ADMIN, USER
 	}
 
 }
