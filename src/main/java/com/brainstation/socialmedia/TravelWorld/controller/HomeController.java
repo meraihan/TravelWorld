@@ -18,6 +18,6 @@ public class HomeController {
 
     @GetMapping("/404")
     public String error() {
-        return "error/error";
+        return "error/404";
     }
 }

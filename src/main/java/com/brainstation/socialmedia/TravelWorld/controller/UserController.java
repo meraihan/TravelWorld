@@ -20,14 +20,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/find")
-    public String findUserPageDisplay() {
-        return "user/search";
-    }
-
-
     @PostMapping("/find")
-    public String findUserByusername(@ModelAttribute("userName") String username, Model model) {
+    public String findUserByuserName(@ModelAttribute("userName") String username, Model model) {
         User user = userService.getUser(username);
         if (user != null) {
             List<User> users = new ArrayList<>();
