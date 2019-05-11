@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,23 +33,20 @@ public class UserRepository {
             log.error(query.replace("?", username));
             log.error(dae.getLocalizedMessage());
         }
-        return null;
+        return new User();
     }
 
 
     public List<User> findAll() {
-        List<User> users;
         String query = "Select * from user";
-
         try {
-            users = jdbcTemplate.query(query, new UserRowMapper());
-            return users;
+            return jdbcTemplate.query(query, new UserRowMapper());
         } catch (DataAccessException dae) {
             log.error("An exception occurred when executing the following query:");
             log.error(query);
             log.error(dae.getLocalizedMessage());
         }
-        return null;
+        return new ArrayList<>();
     }
 
     public User add(User user) {

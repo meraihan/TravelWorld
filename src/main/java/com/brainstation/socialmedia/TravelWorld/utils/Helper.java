@@ -12,9 +12,7 @@ public class Helper {
 
     public static PasswordEncoder bCryptEncoder = new BCryptPasswordEncoder();
 
-    public Timestamp timestamp = new Timestamp(System.currentTimeMillis());
     public static ZoneId defaultZoneId = TimeZone.getDefault().toZoneId();
-
     public static LocalDateTime timeStampToLocalDateTime(Timestamp timestamp) {
         return LocalDateTime.ofInstant(timestamp.toInstant(), defaultZoneId);
     }

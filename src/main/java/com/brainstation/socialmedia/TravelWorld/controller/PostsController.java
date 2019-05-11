@@ -43,4 +43,5 @@ public class PostsController {
         }
         return "post/all";
     }
+
 }

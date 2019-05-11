@@ -1,7 +1,9 @@
 package com.brainstation.socialmedia.TravelWorld.repository;
 
 import com.brainstation.socialmedia.TravelWorld.model.Posts;
+import com.brainstation.socialmedia.TravelWorld.model.User;
 import com.brainstation.socialmedia.TravelWorld.model.rowmapper.PostsRowMapper;
+import com.brainstation.socialmedia.TravelWorld.model.rowmapper.UserRowMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -9,7 +11,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -49,5 +53,17 @@ public class PostRepository {
             log.error("Post Not Found, Error: {}",dae.getLocalizedMessage());
             return new Posts();
         }
+    }
+
+    public List<Posts> findAll() {
+        String query = "Select * from user";
+        try {
+            return jdbcTemplate.query(query, new PostsRowMapper());
+        } catch (DataAccessException dae) {
+            log.error("An exception occurred when executing the following query:");
+            log.error(query);
+            log.error(dae.getLocalizedMessage());
+        }
+        return new ArrayList<>();
     }
 }
