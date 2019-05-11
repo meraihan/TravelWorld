@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{base}">
+<div layout:fragment="page_content" id="search_content">
+Welcome <span sec:authentication="name">USER</span>, Dashboard.
+<ul>
+    <li><a href="#">Find Post</a></li>
+    <li><a href="#">list</a></li>
+    <li><a href="#">Post</a></li>
+</ul>
+
+
+</div>
+</HTML>
