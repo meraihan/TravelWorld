@@ -1,15 +1,11 @@
 package com.brainstation.socialmedia.TravelWorld.controller;
 
 import com.brainstation.socialmedia.TravelWorld.model.Posts;
-import com.brainstation.socialmedia.TravelWorld.model.User;
 import com.brainstation.socialmedia.TravelWorld.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
@@ -21,6 +17,14 @@ public class PostsController {
 
     @Autowired
     PostService postService;
+
+    @GetMapping("/list")
+    public String findAllUsers(Model model) {
+        List<Posts> list;
+        list = postService.findAllPost();
+        model.addAttribute("posts", list);
+        return "post/add";
+    }
 
     @PostMapping("/addPost")
     public String addPost(@ModelAttribute("posts") Posts posts, Model model, final RedirectAttributes redirectAttributes) {
