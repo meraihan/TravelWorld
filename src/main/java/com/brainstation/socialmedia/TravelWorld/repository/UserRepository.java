@@ -9,10 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @Repository
@@ -60,11 +57,14 @@ public class UserRepository {
         parameters.put("user_name", user.getUserName());
         parameters.put("password", user.getPassword());
         parameters.put("email", user.getEmail());
+        parameters.put("is_active", user.getIsActive());
         parameters.put("role", user.getRole());
         parameters.put("age", user.getAge());
         parameters.put("gender", user.getGender().name());
         parameters.put("address", user.getAddress());
-
+        parameters.put("created_at", new Date());
+        parameters.put("updated_at", new Date());
+        parameters.put("deleted_at", new Date());
         Number id = simpleJdbcInsert.executeAndReturnKey(parameters);
         if (id == null) {
             log.error("Failed to insert {}", user);

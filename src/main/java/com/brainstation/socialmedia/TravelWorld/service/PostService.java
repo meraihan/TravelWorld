@@ -18,7 +18,6 @@ public class PostService {
     @Autowired
     UserRepository userRepository;
 
-
     public List<Posts> findAllPost(){
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         List<Posts> postsList = postRepository.findAll();
@@ -34,6 +33,10 @@ public class PostService {
     }
 
     public Posts addPost(Posts post) {
+        User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        User user1 = new User();
+        user1.setId(user.getId());
+        post.setUser(user1);
         return postRepository.add(post);
     }
 
