@@ -3,7 +3,6 @@ package com.brainstation.socialmedia.TravelWorld.model.rowmapper;
 import com.brainstation.socialmedia.TravelWorld.model.Area;
 import com.brainstation.socialmedia.TravelWorld.model.Posts;
 import com.brainstation.socialmedia.TravelWorld.model.User;
-import com.brainstation.socialmedia.TravelWorld.utils.Helper;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -23,9 +22,9 @@ public class PostsRowMapper implements RowMapper<Posts> {
         User user = new User();
         user.setId(resultSet.getInt("user_id"));
         posts.setUser(user);
-        posts.setCreatedAt(Helper.timeStampToLocalDateTime(resultSet.getTimestamp("created_at")));
-        posts.setUpdatedAt(Helper.timeStampToLocalDateTime(resultSet.getTimestamp("updated_at")));
-        posts.setDeletedAt(Helper.timeStampToLocalDateTime(resultSet.getTimestamp("deleted_at")));
+        posts.setCreatedAt(resultSet.getDate("created_at"));
+        posts.setUpdatedAt(resultSet.getDate("updated_at"));
+        posts.setDeletedAt(resultSet.getDate("deleted_at"));
         return posts;
     }
 }

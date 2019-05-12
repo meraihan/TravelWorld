@@ -1,7 +1,6 @@
 package com.brainstation.socialmedia.TravelWorld.model.rowmapper;
 
 import com.brainstation.socialmedia.TravelWorld.model.User;
-import com.brainstation.socialmedia.TravelWorld.utils.Helper;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -19,10 +18,11 @@ public class UserRowMapper implements RowMapper<User> {
         user.setEmail(resultSet.getString("email"));
         user.setRole(User.Role.valueOf(resultSet.getString("role")));
         user.setGender(User.Gender.valueOf(resultSet.getString("gender")));
+        user.setIsActive(resultSet.getBoolean("is_active"));
         user.setAddress(resultSet.getString("address"));
-        user.setCreatedAt(Helper.timeStampToLocalDateTime(resultSet.getTimestamp("created_at")));
-        user.setUpdatedAt(Helper.timeStampToLocalDateTime(resultSet.getTimestamp("updated_at")));
-        user.setDeletedAt(Helper.timeStampToLocalDateTime(resultSet.getTimestamp("deleted_at")));
+        user.setCreatedAt(resultSet.getDate("created_at"));
+        user.setUpdatedAt(resultSet.getDate("updated_at"));
+        user.setDeletedAt(resultSet.getDate("deleted_at"));
         return user;
     }
 
