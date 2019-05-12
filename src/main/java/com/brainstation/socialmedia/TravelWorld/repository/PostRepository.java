@@ -64,4 +64,26 @@ public class PostRepository {
         }
         return new ArrayList<>();
     }
+
+    public boolean delete(Integer postId) {
+        log.info("Deleting Posts Of PostId: {} ", postId);
+        try {
+            return jdbcTemplate.update("DELETE FROM posts WHERE id = ?", postId) == 1;
+        } catch (DataAccessException dae) {
+            log.error("Error : {} Deleting Posts id: {} " , dae.getLocalizedMessage(), postId);
+        }
+        return false;
+    }
+
+    public boolean update(Posts posts) {
+        String query = "UPDATE posts SET  post = ?, status = ?, location_id=?,  updated_at = ? WHERE id = ?";
+        try {
+            return jdbcTemplate.update(query, posts.getPost(),posts.getStatus(), posts.getArea().getId(),
+                    posts.getUpdatedAt() , posts.getId()) == 1;
+        } catch (DataAccessException e) {
+            log.error("Update failed for post: {}. Error: {}", posts, e.getLocalizedMessage());
+            return false;
+        }
+    }
+
 }
