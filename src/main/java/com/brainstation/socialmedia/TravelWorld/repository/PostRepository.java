@@ -1,9 +1,7 @@
 package com.brainstation.socialmedia.TravelWorld.repository;
 
 import com.brainstation.socialmedia.TravelWorld.model.Posts;
-import com.brainstation.socialmedia.TravelWorld.model.User;
 import com.brainstation.socialmedia.TravelWorld.model.rowmapper.PostsRowMapper;
-import com.brainstation.socialmedia.TravelWorld.model.rowmapper.UserRowMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -56,7 +54,7 @@ public class PostRepository {
     }
 
     public List<Posts> findAll() {
-        String query = "Select * from user";
+        String query = "Select * from posts";
         try {
             return jdbcTemplate.query(query, new PostsRowMapper());
         } catch (DataAccessException dae) {
