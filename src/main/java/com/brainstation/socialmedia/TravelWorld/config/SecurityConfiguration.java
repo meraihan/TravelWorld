@@ -23,8 +23,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/user/register").permitAll()
-                .antMatchers("/dashboard", "/posts/**", "/user/**").hasAuthority("USER")
+                //for now all end point are accessible to all user. It will be changed
+                .antMatchers("/", "/dashboard","/posts/**", "/user/**").permitAll()
+//                .antMatchers("/dashboard", "/posts/**", "/user/**").hasAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
