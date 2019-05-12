@@ -18,8 +18,7 @@
     <nav>
         <ul th:if="${#authorization.expression('isAuthenticated()')}">
             <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/user/list">Users</a></li>
-            <li><a href="#">Post</a></li>
+            <li><a href="/posts/list">Posts</a></li>
             <li><a id="logout" href="#">Logout</a></li>
         </ul>
     </nav>

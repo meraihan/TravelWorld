@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<div layout:fragment="page_content" id="search_content">
+
+    <h2>Post a status</h2>
+    <form th:action="@{/posts/addPost}" th:method="POST" th:object="${posts}" >
+        <div class="form-group">
+            <label for="post">Status</label>
+            <input type="text" id="post" placeholder="Status" th:field="*{post}"/> <br></br>
+        </div>
+        <div class="form-group">
+            <label for="post">Change Privacy</label>
+            <input type="radio" name="status" value="PUBLIC" checked> PUBLIC<br>
+            <input type="radio" name="status" value="PRIVATE"> PRIVATE<br>
+        </div>
+        <div class="form-group">
+            <label for="area">Check in:</label>
+            <select id="area" name="area.location" th:field="*{area.location}">
+                <option th:each="area, iteration: ${areas}" th:value="${area}" th:text="${area}"></option>
+            </select>
+        </div>
+
+        <!--<div class="form-group">-->
+                <!--<label for="role">Roles</label>-->
+                <!--<select id="role" name="role" th:field="*{role}">-->
+                    <!--<option th:each="role, iteration: ${roles}" th:value="${role}" th:text="${role}"></option>-->
+                <!--</select>-->
+        <!--</div>-->
+        <div class="form-group">
+            <input type="submit" value="Submit"/>
+        </div>
+    </form>
+
+
+</div>
+</HTML>
