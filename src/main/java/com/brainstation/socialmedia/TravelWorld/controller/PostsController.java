@@ -65,4 +65,14 @@ public class PostsController {
         return "posts/list";
     }
 
+    @RequestMapping(value = "/delete")
+    public String delete( @ModelAttribute("posts") Posts posts, final RedirectAttributes redirectAttributes) {
+        if (postService.delete(posts.getId())) {
+            redirectAttributes.addFlashAttribute("success", "Successfully Deleted Posts..");
+        } else {
+            redirectAttributes.addFlashAttribute("error", "Delation Failed !");
+        }
+        return "redirect:list";
+    }
+
 }

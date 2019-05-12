@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<!DOCTYPE HTML>
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{base}">
+<div layout:fragment="page_content" id="search_content">
+    <div th:text="${success}"></div>
+    <table>
+        <thead>
+        <tr>
+            <th>Serial</th>
+            <th>Post</th>
+            <th>Status</th>
+            <th>Location</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="allpost,iterationStatus : ${posts}">
+            <td th:text="${iterationStatus.count}">1</td>
+            <td th:text="${allpost.post}"></td>
+            <td th:text="${allpost.status}"></td>
+            <td th:text="${allpost.area.location}"></td>
+            <td><a th:href="@{/posts/delete(id=${allpost.id})}">del</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</HTML>

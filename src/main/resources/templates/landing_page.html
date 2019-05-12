@@ -6,7 +6,6 @@
       layout:decorate="~{base}">
 <div layout:fragment="page_content" id="search_content">
     This is just a simple landing page.<br>
-    <div th:text="${success}"></div>
 
     <a th:href="@{/user/register}">
         <span th:if="${not #authorization.expression('isAuthenticated()')}">Not Registered? Sign Up Now</span>
