@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/post")
+@RequestMapping("/posts")
 public class PostsController {
 
     @Autowired
@@ -62,7 +62,7 @@ public class PostsController {
             posts.add(post);
             model.addAttribute("posts", posts);
         }
-        return "post/post";
+        return "posts/list";
     }
 
 }
