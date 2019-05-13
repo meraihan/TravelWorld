@@ -29,6 +29,7 @@ public class UserRepositoryTest {
         user.setGender(User.Gender.MALE);
         user.setRole(User.Role.USER);
         Number insertedId = userRepository.add(user).getId();
+        log.info("Inserted User Id:{}", insertedId);
         Assert.assertNotNull(insertedId);
     }
 }
